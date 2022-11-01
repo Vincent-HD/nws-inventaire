@@ -1,12 +1,10 @@
 datasource db {
-    provider = "sqlite"
-    url = "file:./db.sqlite"
-    // url = "mysql://root:@localhost:3306/nws-inventaire"
+    provider = "mysql"
+    url      = "mysql://root:@localhost:3306/nws-inventaire"
 }
 
 generator client {
     provider = "prisma-client-js"
-    output   = "../prisma/generated/client"
 }
 
 model User {
@@ -15,32 +13,42 @@ model User {
     password  String
     firstname String
     lastname  String
-    role      String
-    // role      Role @default(USER)
+    role      Role     @default(USER)
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    equipmentLoans Equipment[]
+    loans     Loans[]
 }
 
 model Equipment {
     id          Int      @id @default(autoincrement())
     name        String
-    description String
-    status      String
-    // status      Status   @default(AVAILABLE)
-    loaner      User?    @relation(fields: [loanerId], references: [id])
-    loanerId    Int?
+    description String   @db.Text
+    stock       Int
+    status      Status   @default(AVAILABLE)
+    loans       Loans[]
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
 }
 
-// enum Status {
-//     AVAILABLE
-//     UNAVAILABLE
-//     UNLOANABLE
-// }
+model Loans {
+    id            Int       @id @default(autoincrement())
+    equipment     Equipment @relation(fields: [equipmentId], references: [id])
+    equipmentId   Int
+    renter        User      @relation(fields: [renterId], references: [id])
+    renterId      Int
+    loanStartDate DateTime  @default(now())
+    loanEndDate   DateTime
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @updatedAt
+}
 
-// enum Role {
-//     USER
-//     ADMIN
-// }
+enum Status {
+    AVAILABLE
+    UNAVAILABLE
+    UNLOANABLE
+}
+
+enum Role {
+    USER
+    ADMIN
+}

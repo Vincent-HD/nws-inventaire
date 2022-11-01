@@ -5,13 +5,14 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare && prisma generate"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.12",
-    "prisma": "^4.5.0"
+    "@prisma/client": "^4.5.0",
+    "nuxt": "3.0.0-rc.12"
   },
   "dependencies": {
-    "@prisma/client": "^4.5.0"
+    "@faker-js/faker": "^7.6.0",
+    "prisma": "^4.5.0"
   }
 }

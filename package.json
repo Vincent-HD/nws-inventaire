@@ -5,7 +5,8 @@
     "dev": "nuxt dev --host 127.0.0.1",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare && prisma generate"
+    "postinstall": "nuxt prepare && prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init"
   },
   "devDependencies": {
     "@prisma/client": "^4.5.0",

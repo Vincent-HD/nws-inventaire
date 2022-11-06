@@ -1,9 +1,8 @@
-import { Loans, PrismaClient } from "@prisma/client";
-import { isDateValid } from "@/utils";
+import { Loans } from "@prisma/client";
+import { prisma } from '@/prisma/db'
+import { isDateValid } from "~~/composables/useUtils";
 import { isNuxtError } from "#app"; //? It's supposed to be auto-imported, but it's apparently not.
 import { H3Error } from "h3";
-
-const prisma = new PrismaClient();
 
 type LoanCreateQuery = {
     equipmentId: number;

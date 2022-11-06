@@ -1,7 +1,6 @@
+import { prisma } from '@/prisma/db'
 import { faker } from '@faker-js/faker'
-import { Equipment, PrismaClient, Status, User } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { Equipment, Status, User } from '@prisma/client'
 
 export default defineEventHandler(async (event) => {
     const randomValue = Math.random()

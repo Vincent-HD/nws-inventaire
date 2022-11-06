@@ -1,7 +1,5 @@
-import { Prisma, PrismaClient } from "@prisma/client";
-import { toEquipementStatus } from "@/utils";
-
-const prisma = new PrismaClient()
+import { prisma } from '@/prisma/db'
+import { toEquipementStatus } from "~~/composables/useUtils";
 
 export default defineEventHandler(async (event) => {
     let { name, description, stock, status } = await readBody(event)

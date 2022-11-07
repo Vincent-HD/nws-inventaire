@@ -55,7 +55,7 @@
     "method": "GET",
     "sortNum": 5000,
     "created": "2022-10-29T12:57:00.446Z",
-    "modified": "2022-10-30T18:06:47.664Z",
+    "modified": "2022-11-07T17:44:33.270Z",
     "headers": [],
     "params": [],
     "tests": []
@@ -126,17 +126,22 @@
     "colId": "3e0bc53e-31df-425f-a9a7-d227d8786867",
     "containerId": "3812ef38-73da-4ea7-a457-57be431d194c",
     "name": "Get all",
-    "url": "/loans",
+    "url": "/loans?renterId=5",
     "method": "GET",
     "sortNum": 90000,
     "created": "2022-10-29T19:08:50.545Z",
-    "modified": "2022-10-31T21:17:51.914Z",
+    "modified": "2022-11-07T17:49:31.539Z",
     "headers": [],
     "params": [
       {
         "name": "equipmentId",
-        "value": "5",
+        "value": "6",
         "isDisabled": true,
+        "isPath": false
+      },
+      {
+        "name": "renterId",
+        "value": "5",
         "isPath": false
       }
     ],
@@ -151,7 +156,7 @@
     "method": "GET",
     "sortNum": 100000,
     "created": "2022-10-29T19:08:55.102Z",
-    "modified": "2022-10-29T19:09:22.488Z",
+    "modified": "2022-11-07T17:48:48.710Z",
     "headers": [],
     "params": [],
     "tests": []

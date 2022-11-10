@@ -1,18 +1,14 @@
 version: '3.8'
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        VARIANT: "16"
-    # Overrides default command so things don't shut down after the process ends.
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    build: 
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
     volumes:
-      - ..:/workspace:cached
+      - .:/app:cached
     environment:
       DATABASE_URL: "mysql://root:dev@db:3306/nws-inventaire" # DEV URL DB
-    network_mode: service:db
   db:
     image: mysql
     # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
@@ -23,6 +19,7 @@ services:
       - mysqldb-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: dev
+    network_mode: service:app
 
 volumes:
   mysqldb-data:

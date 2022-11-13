@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app:cached
+    environment:
+      DATABASE_URL: "mysql://root:dev@db:3306/nws-inventaire" # DEV URL DB
+  db:
+    image: mysql
+    restart: always
+    volumes:
+      - mysqldb-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: dev
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=db
+volumes:
+  mysqldb-data:

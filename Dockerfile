@@ -22,4 +22,4 @@ USER $USERNAME
 
 EXPOSE 3000
 
-CMD [ "/bin/sh", "-c", "npm i && npm run dev" ]
+CMD [ "/bin/sh", "-c", "npm i && npm run dev -- --host 0.0.0.0" ]

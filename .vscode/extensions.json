@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "Vue.volar",
+        "Prisma.prisma",
+        "rangav.vscode-thunder-client"
+    ]
+}
